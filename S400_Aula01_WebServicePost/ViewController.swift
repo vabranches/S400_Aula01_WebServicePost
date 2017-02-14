@@ -1,24 +1,43 @@
-//
-//  ViewController.swift
-//  S400_Aula01_WebServicePost
-//
-//  Created by Swift on 13/02/17.
-//  Copyright © 2017 Swift. All rights reserved.
-//
 
 import UIKit
 
 class ViewController: UIViewController {
+    
+    //MARK: Outlets
+    @IBOutlet weak var tituloTextField: UITextField!
+    @IBOutlet weak var plataformaTextField: UITextField!
+    @IBOutlet weak var anoTextField: UITextField!
+    
+    //MARK: Propriedades
+    var minhaSessao : URLSession!
+    var baseURL = URL(string: "https://meuws.herokuapp.com/api/v1/jogos")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.minhaSessao = URLSession(configuration: .default)
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    //MARK: Actions
+    @IBAction func cadastrar(_ sender: UIButton) {
+        var minhaTarefa = minhaSessao.dataTask(with: baseURL!) { (data, response, erro) in
+            //
+        }
     }
+    
+    
+    //MARK: Métodos de UIResponder
+    override var canBecomeFirstResponder: Bool{
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.becomeFirstResponder()
+    }
+
 
 
 }
